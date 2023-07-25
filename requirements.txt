@@ -231,7 +231,7 @@ prometheus-client==0.15.0
 prompt-toolkit==3.0.33
 property-cached==1.6.4
 prophet==1.1.1
-protobuf>3.19.0
+protobuf==3.19.6
 psaw==0.0.12
 psutil==5.9.3
 pure-eval==0.2.2
