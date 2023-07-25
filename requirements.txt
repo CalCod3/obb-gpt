@@ -234,7 +234,6 @@ prophet==1.1.1
 protobuf==3.19.0
 psaw==0.0.12
 psutil==5.9.3
-psycopg2==2.9.6
 pure-eval==0.2.2
 pyally==1.1.2
 pyarrow==10.0.1
