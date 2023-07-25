@@ -34,7 +34,6 @@ schedule
 semver
 sentiment-investor
 setuptools-rust
-spacy
 streamlit-aggrid
 ta-lib
 tiktoken
