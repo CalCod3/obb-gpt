@@ -145,7 +145,7 @@ jupyterlab_server==2.16.3
 jupyterlab-widgets==3.0.3
 kiwisolver==1.4.4
 korean-lunar-calendar==0.3.1
-langchain==0.0.229
+langchain==0.0.242
 langchainplus-sdk==0.0.20
 langcodes==3.3.0
 lightgbm==3.3.5
