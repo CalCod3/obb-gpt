@@ -275,8 +275,6 @@ pytorch-lightning==1.6.5
 pytrends==4.9.2
 pytz==2022.7.1
 pytz-deprecation-shim==0.1.0.post0
-pywin32==305
-pywinpty==2.0.9
 pywry==0.4.9
 PyYAML==6.0
 pyzmq==24.0.1
