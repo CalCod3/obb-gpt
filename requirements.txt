@@ -62,7 +62,6 @@ DateTime==4.7
 debugpy==1.6.4
 decorator==5.1.1
 defusedxml==0.7.1
-degiro-connector==2.0.21
 deprecation==2.1.0
 detecta==0.0.5
 dill==0.3.6
@@ -226,7 +225,7 @@ prometheus-client==0.15.0
 prompt-toolkit==3.0.33
 property-cached==1.6.4
 prophet==1.1.1
-protobuf==3.19.6
+protobuf==4.23.4
 psaw==0.0.12
 psutil==5.9.3
 pure-eval==0.2.2
