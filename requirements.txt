@@ -390,7 +390,6 @@ xmltodict==0.13.0
 y-py==0.6.0
 yahooquery==2.3.0
 yarl==1.8.2
-yfinance==0.2.12
 yt-dlp==2023.2.17
 zipp==3.11.0
 zope.interface==5.5.2
