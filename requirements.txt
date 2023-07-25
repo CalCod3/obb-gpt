@@ -1,12 +1,7 @@
--rotobuf
 anaconda
 autopep8
 black
 brotlipy
-django-filter
-django-heroku
-django-widget-tweaks
-djangorestframework
 elasticsearch
 faiss-cpu
 flit-core
@@ -22,11 +17,8 @@ manifest-ml
 nltk
 openai
 openai-whisper
-openbb
+openbb==3.0.0
 pinecone-client
-pip-autoremove
-pip-chill
-pipdeptree
 psaw
 pyally
 pyex
