@@ -35,7 +35,6 @@ semver
 sentiment-investor
 setuptools-rust
 streamlit-aggrid
-ta-lib
 tiktoken
 tweepy
 u8darts
