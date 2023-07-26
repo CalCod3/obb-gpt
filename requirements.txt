@@ -3,5 +3,4 @@ langchain
 pypdf2
 streamlit
 pandas
-sqlite3
 sqlalchemy
