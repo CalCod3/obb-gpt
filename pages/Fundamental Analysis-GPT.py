@@ -28,26 +28,34 @@ with cont:
 
         st.write("Choose a Dataset to load for your Stock Option")
 
-        col1, col2, col3, col4, col5 = st.columns([1,1,1,1,1])
-        expiry = datetime.today() + relativedelta(months=1)
+        col1, col2, col3, col4, col5, col6, col7, col8 = st.columns([1,1,1,1,1,1,1,1])
 
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.stocks.options.info(choice)
+            st.session_state['data'] = openbb.stocks.fa.enterprise(choice)
 
-        if col1.button('Put-Call Ratio'):
-            st.session_state['data'] = openbb.stocks.options.pcr(choice)
+        if col1.button('Balance'):
+            st.session_state['data'] = openbb.stocks.fa.balance(choice)
 
-        if col2.button('Options Info'):
-            st.session_state['data'] = openbb.stocks.options.info(choice)
+        if col2.button('Cash-Flow'):
+            st.session_state['data'] = openbb.stocks.fa.cash(choice)
 
-        if col3.button('Options Chains'):
-            st.session_state['data'] = openbb.stocks.options.chains(choice)
+        if col3.button('Enterprise Data'):
+            st.session_state['data'] = openbb.stocks.fa.cal(choice)
 
-        if col4.button('EOD Chain', help = "Requires Intrinio API Key :closed_lock_with_key:"):
-            st.session_state['data'] = openbb.stocks.options.eodchain(choice)
+        if col4.button('Annual Estimates'):
+            st.session_state['data'] = openbb.stocks.fa.est(choice)[0]
 
-        if col5.button('Volatility Surface'):
-            st.session_state['data'] = openbb.stocks.options.vsurf(choice)
+        if col5.button('Rating over Time'):
+            st.session_state['data'] = openbb.stocks.fa.rating(choice)
+
+        if col6.button('Fraud Ratio'):
+            st.session_state['data'] = openbb.stocks.fa.fraud(choice)
+
+        if col7.button('Key Ratios'):
+            st.session_state['data'] = openbb.stocks.fa.ratios(choice)
+
+        if col8.button('Supplier Data'):
+            st.session_state['data'] = openbb.stocks.fa.supplier(choice)
 
 
 data_stream()
