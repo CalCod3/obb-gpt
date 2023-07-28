@@ -8,17 +8,9 @@ from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
 from langchain.callbacks import get_openai_callback
 
 
-st.set_page_config(page_title="Fundamental Analysis", page_icon="📈", layout="wide")
+st.set_page_config(page_title="Economy Analysis", page_icon="📈", layout="wide")
 
-st.title("Fundamental Analysis with OpenBB:butterfly: & ChatGPT:robot_face:")
-
-unu_df, unu_ts = openbb.stocks.options.unu(limit = 500)
-
-unu_df = unu_df.sort_values(by = 'Vol/OI', ascending = False)
-choice = st.selectbox(
-    label = "Choose a Stock Ticker",
-    options = (unu_df['Ticker'])
-)
+st.title("Economy Analysis with OpenBB:butterfly: & ChatGPT:robot_face:")
 
 cont = st.container()
 
@@ -26,37 +18,30 @@ with cont:
     @st.cache_data(experimental_allow_widgets=True)
     def data_stream():
 
-        st.write("Choose a Dataset to load for your Stock Option")
+        st.write("Choose a Dataset to load")
 
-        col1, col2, col3, col4, col5, col6, col7, col8 = st.columns([1,1,1,1,1,1,1,1])
+        col1, col2, col3, col4, col5, col6 = st.columns([1,1,1,1,1,1])
 
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.stocks.fa.enterprise(choice)
+            st.session_state['data'] = openbb.economy.glbonds()
 
-        if col1.button('Balance'):
-            st.session_state['data'] = openbb.stocks.fa.balance(choice)
+        if col1.button('Futures'):
+            st.session_state['data'] = openbb.economy.futures()
 
-        if col2.button('Cash-Flow'):
-            st.session_state['data'] = openbb.stocks.fa.cash(choice)
+        if col2.button('Indices'):
+            st.session_state['data'] = openbb.economy.indices()
 
-        if col3.button('Enterprise Data'):
-            st.session_state['data'] = openbb.stocks.fa.enterprise(choice)
+        if col3.button('Global Bonds'):
+            st.session_state['data'] = openbb.economy.glbonds()
 
-        if col4.button('Annual Estimates'):
-            st.session_state['data'] = openbb.stocks.fa.est(choice)[0]
+        if col4.button('US Macro Data'):
+            st.session_state['data'] = openbb.economy.macro()[0]
 
-        if col5.button('Rating over Time'):
-            st.session_state['data'] = openbb.stocks.fa.rating(choice)
+        if col5.button('Market Overview'):
+            st.session_state['data'] = openbb.economy.overview()
 
-        if col6.button('Fraud Ratio'):
-            st.session_state['data'] = openbb.stocks.fa.fraud(choice)
-
-        if col7.button('Key Ratios'):
-            st.session_state['data'] = openbb.stocks.fa.ratios(choice)
-
-        if col8.button('Supplier Data'):
-            st.session_state['data'] = openbb.stocks.fa.supplier(choice)
-
+        if col6.button('US Bonds'):
+            st.session_state['data'] = openbb.economy.usbonds()
 
 data_stream()
 

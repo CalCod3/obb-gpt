@@ -1,4 +1,4 @@
-openbb==3.0.0
+openbb-nightly[all]
 langchain
 pypdf2
 streamlit
