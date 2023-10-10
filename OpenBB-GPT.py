@@ -1,5 +1,5 @@
 import streamlit as st 
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import pandas as pd
 import plotly.graph_objects as go
 import sqlite3
@@ -59,7 +59,7 @@ openai_key = st.secrets["OPENAI_KEY"]
 
 @st.cache_data()
 def load(ticker):
-    df = openbb.econometrics.load(ticker)
+    df = obb.econometrics.load(ticker)
     return df
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)

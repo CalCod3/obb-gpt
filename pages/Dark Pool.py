@@ -1,5 +1,5 @@
 import pandas as pd
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
@@ -28,28 +28,28 @@ with cont:
         col1, col2, col3, col4, col5, col6, col7 = st.columns([1,1,1,1,1,1,1])
         
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.stocks.dps.ctb()
+            st.session_state['data'] = obb.stocks.dps.ctb()
 
         if col1.button('Cost To Borrow'):
-            st.session_state['data'] = openbb.stocks.dps.ctb()
+            st.session_state['data'] = obb.stocks.dps.ctb()
 
         if col2.button('Dark Pool v. OTC'):
-            st.session_state['data'] = openbb.stocks.dps.dpotc(choice)[0]
+            st.session_state['data'] = obb.stocks.dps.dpotc(choice)[0]
 
         if col3.button('Failed To Deliver'):
-            st.session_state['data'] = openbb.stocks.dps.ftd(choice)
+            st.session_state['data'] = obb.stocks.dps.ftd(choice)
 
         if col4.button('High Short Interest'):
-            st.session_state['data'] = openbb.stocks.dps.hsi()
+            st.session_state['data'] = obb.stocks.dps.hsi()
 
         if col5.button('Most Shorted Stocks'):
-            st.session_state['data'] = openbb.stocks.dps.shorted()
+            st.session_state['data'] = obb.stocks.dps.shorted()
             
         if col6.button('Short Interest by Stock'):
-            st.session_state['data'] = openbb.stocks.dps.psi_q(choice)
+            st.session_state['data'] = obb.stocks.dps.psi_q(choice)
             
         if col7.button('Short Interest & Days To Cover'):
-            st.session_state['data'] = openbb.stocks.dps.sidtc()
+            st.session_state['data'] = obb.stocks.dps.sidtc()
 
 data_stream()
 

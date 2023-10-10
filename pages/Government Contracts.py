@@ -1,5 +1,5 @@
 import pandas as pd
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
@@ -33,28 +33,28 @@ with cont:
         col1, col2, col3, col4, col5, col6, col7 = st.columns([1,1,1,1,1,1,1])
         
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.stocks.gov.contracts(choice)
+            st.session_state['data'] = obb.stocks.gov.contracts(choice)
 
         if col1.button('Government Contracts'):
-            st.session_state['data'] = openbb.stocks.gov.contracts(choice)
+            st.session_state['data'] = obb.stocks.gov.contracts(choice)
 
         if col2.button('Government Trading'):
-            st.session_state['data'] = openbb.stocks.gov.government_trading(gov_type = gov_type, symbol = choice)
+            st.session_state['data'] = obb.stocks.gov.government_trading(gov_type = gov_type, symbol = choice)
 
         if col3.button('Historical Quarterly Contracts'):
-            st.session_state['data'] = openbb.stocks.gov.histcont(choice)
+            st.session_state['data'] = obb.stocks.gov.histcont(choice)
 
         if col4.button('Corporate Lobbying'):
-            st.session_state['data'] = openbb.stocks.gov.lobbying(choice)
+            st.session_state['data'] = obb.stocks.gov.lobbying(choice)
 
         if col5.button('Top Government Buys'):
-            st.session_state['data'] = openbb.stocks.gov.topbuys(gov_type)
+            st.session_state['data'] = obb.stocks.gov.topbuys(gov_type)
             
         if col6.button('Top Government Sells'):
-            st.session_state['data'] = openbb.stocks.gov.topsells(gov_type)
+            st.session_state['data'] = obb.stocks.gov.topsells(gov_type)
             
         if col7.button('Top Government Lobbies'):
-            st.session_state['data'] = openbb.stocks.gov.toplobbying()
+            st.session_state['data'] = obb.stocks.gov.toplobbying()
 
 
 data_stream()

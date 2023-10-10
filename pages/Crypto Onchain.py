@@ -1,5 +1,5 @@
 import pandas as pd
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
@@ -12,7 +12,7 @@ st.set_page_config(page_title="Onchain Crypto", page_icon="📈", layout="wide")
 
 st.title("Crypto Onchain data analysis with OpenBB:butterfly: & ChatGPT:robot_face:")
 
-options_df = openbb.crypto.onchain.erc20_tokens()
+options_df = obb.crypto.onchain.erc20_tokens()
 
 choice = st.selectbox(
     label = "Choose a Crypto",
@@ -30,22 +30,22 @@ with cont:
         col1, col2, col3, col4, col5 = st.columns([1,1,1,1,1])
 
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.crypto.onchain.tv()
+            st.session_state['data'] = obb.crypto.onchain.tv()
 
         if col1.button('Token Volume'):
-            st.session_state['data'] = openbb.crypto.onchain.tv()
+            st.session_state['data'] = obb.crypto.onchain.tv()
 
         if col2.button('DEX Trades'):
-            st.session_state['data'] = openbb.crypto.onchain.lt()
+            st.session_state['data'] = obb.crypto.onchain.lt()
 
         if col3.button('Daily Volumes'):
-            st.session_state['data'] = openbb.crypto.onchain.dvcp(symbol = choice)
+            st.session_state['data'] = obb.crypto.onchain.dvcp(symbol = choice)
 
         if col4.button('Monthly DEX Trades'):
-            st.session_state['data'] = openbb.crypto.onchain.dex_trades_monthly()
+            st.session_state['data'] = obb.crypto.onchain.dex_trades_monthly()
 
         if col5.button('Bid & Ask Prices'):
-            st.session_state['data'] = openbb.crypto.onchain.baas(symbol = choice)
+            st.session_state['data'] = obb.crypto.onchain.baas(symbol = choice)
 
 data_stream()
 

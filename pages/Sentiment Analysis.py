@@ -1,5 +1,5 @@
 import pandas as pd
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
@@ -12,7 +12,7 @@ st.set_page_config(page_title="Sentiment Analysis", page_icon="📈", layout="wi
 
 st.title("Sentiment Analysis with OpenBB:butterfly: & ChatGPT:robot_face:")
 
-unu_df, unu_ts = openbb.stocks.options.unu(limit = 500)
+unu_df, unu_ts = obb.stocks.options.unu(limit = 500)
 
 unu_df = unu_df.sort_values(by = 'Vol/OI', ascending = False)
 choice = st.selectbox(
@@ -32,28 +32,28 @@ with cont:
         
 
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.stocks.ba.headlines(choice)
+            st.session_state['data'] = obb.stocks.ba.headlines(choice)
 
         if col1.button('Headlines Sentiment'):
-            st.session_state['data'] = openbb.stocks.ba.headlines(choice)
+            st.session_state['data'] = obb.stocks.ba.headlines(choice)
 
         if col2.button('Last Messages', help = "Source: stocktwits"):
-            st.session_state['data'] = openbb.stocks.ba.messages(choice)
+            st.session_state['data'] = obb.stocks.ba.messages(choice)
 
         if col3.button('Interest by Region'):
-            st.session_state['data'] = openbb.stocks.ba.regions(choice)
+            st.session_state['data'] = obb.stocks.ba.regions(choice)
 
         if col4.button('Mentions'):
-            st.session_state['data'] = openbb.stocks.ba.mentions(choice)
+            st.session_state['data'] = obb.stocks.ba.mentions(choice)
 
         if col5.button('Twitter Sentiment', help = "Requires Twitter API key:closed_lock_with_key:"):
-            st.session_state['data'] = openbb.stocks.ba.sentiment(choice)
+            st.session_state['data'] = obb.stocks.ba.sentiment(choice)
         
         if col6.button('News Sentiment', help = "Source: Finnhub"):
-            st.session_state['data'] = openbb.stocks.ba.snews(choice)
+            st.session_state['data'] = obb.stocks.ba.snews(choice)
 
         if col7.button('Trending Stocks'):
-            st.session_state['data'] = openbb.stocks.ba.trending()
+            st.session_state['data'] = obb.stocks.ba.trending()
 
 
 data_stream()

@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
@@ -14,7 +14,7 @@ st.set_page_config(page_title="Options Analysis", page_icon="📈", layout="wide
 
 st.title("Options Analysis with OpenBB:butterfly: & ChatGPT:robot_face:")
 
-unu_df, unu_ts = openbb.stocks.options.unu(limit = 500)
+unu_df, unu_ts = obb.stocks.options.unu(limit = 500)
 
 unu_df = unu_df.sort_values(by = 'Vol/OI', ascending = False)
 choice = st.selectbox(
@@ -34,22 +34,22 @@ with cont:
         expiry = datetime.today() + relativedelta(months=1)
 
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.stocks.options.info(choice)
+            st.session_state['data'] = obb.stocks.options.info(choice)
 
         if col1.button('Put-Call Ratio'):
-            st.session_state['data'] = openbb.stocks.options.pcr(choice)
+            st.session_state['data'] = obb.stocks.options.pcr(choice)
 
         if col2.button('Options Info'):
-            st.session_state['data'] = openbb.stocks.options.info(choice)
+            st.session_state['data'] = obb.stocks.options.info(choice)
 
         if col3.button('Options Chains'):
-            st.session_state['data'] = openbb.stocks.options.chains(choice)
+            st.session_state['data'] = obb.stocks.options.chains(choice)
 
         if col4.button('EOD Chain', help = "Requires Intrinio API Key :closed_lock_with_key:"):
-            st.session_state['data'] = openbb.stocks.options.eodchain(choice)
+            st.session_state['data'] = obb.stocks.options.eodchain(choice)
 
         if col5.button('Volatility Surface'):
-            st.session_state['data'] = openbb.stocks.options.vsurf(choice)
+            st.session_state['data'] = obb.stocks.options.vsurf(choice)
 
 
 data_stream()

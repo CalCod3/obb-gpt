@@ -1,5 +1,5 @@
 import pandas as pd
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
@@ -15,7 +15,7 @@ st.title("ETF Analysis with OpenBB:butterfly: & ChatGPT:robot_face:")
 
 choice = st.selectbox(
     label = "Choose an ETF",
-    options = (openbb.etf.symbols()[0])
+    options = (obb.etf.symbols()[0])
 )
 
 cont = st.container()
@@ -29,19 +29,19 @@ with cont:
         col1, col2, col3, col4 = st.columns([1,1,1,1])
 
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.etf.holdings(choice)
+            st.session_state['data'] = obb.etf.holdings(choice)
 
         if col1.button('Holdings'):
-            st.session_state['data'] = openbb.etf.holdings(choice)
+            st.session_state['data'] = obb.etf.holdings(choice)
 
         if col2.button('News'):
-            st.session_state['data'] = openbb.etf.news(choice)
+            st.session_state['data'] = obb.etf.news(choice)
 
         if col3.button('Overview'):
-            st.session_state['data'] = openbb.etf.Overview(choice)
+            st.session_state['data'] = obb.etf.Overview(choice)
 
         if col4.button('ETF Movers'):
-            st.session_state['data'] = openbb.etf.disc.mover()
+            st.session_state['data'] = obb.etf.disc.mover()
 
 
 data_stream()

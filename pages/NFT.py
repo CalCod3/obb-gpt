@@ -1,5 +1,5 @@
 import pandas as pd
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
@@ -12,14 +12,14 @@ st.set_page_config(page_title="NFT Crypto", page_icon="📈", layout="wide")
 
 st.title("Crypto NFT data analysis with OpenBB:butterfly: & ChatGPT:robot_face:")
 
-options_df = openbb.crypto.nft.collections()['slug']
+options_df = obb.crypto.nft.collections()['slug']
 
 choice = st.selectbox(
     label = "Choose an NFT Slug",
     options = (options_df)
 )
 
-coll = openbb.crypto.nft.collections()
+coll = obb.crypto.nft.collections()
 
 del coll['imageBlur']
 
@@ -40,10 +40,10 @@ with cont:
             st.session_state['data'] = coll
 
         if col2.button('NFT Floor Price'):
-            st.session_state['data'] = openbb.crypto.nft.fp(choice)
+            st.session_state['data'] = obb.crypto.nft.fp(choice)
 
         if col3.button('NFT Stats'):
-            st.session_state['data'] = openbb.crypto.nft.stats(slug = choice)
+            st.session_state['data'] = obb.crypto.nft.stats(slug = choice)
 
 data_stream()
 

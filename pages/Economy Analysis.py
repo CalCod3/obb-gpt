@@ -1,5 +1,5 @@
 import pandas as pd
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
@@ -23,25 +23,25 @@ with cont:
         col1, col2, col3, col4, col5, col6 = st.columns([1,1,1,1,1,1])
 
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.economy.glbonds()
+            st.session_state['data'] = obb.economy.glbonds()
 
         if col1.button('Futures'):
-            st.session_state['data'] = openbb.economy.futures()
+            st.session_state['data'] = obb.economy.futures()
 
         if col2.button('Indices'):
-            st.session_state['data'] = openbb.economy.indices()
+            st.session_state['data'] = obb.economy.indices()
 
         if col3.button('Global Bonds'):
-            st.session_state['data'] = openbb.economy.glbonds()
+            st.session_state['data'] = obb.economy.glbonds()
 
         if col4.button('US Macro Data'):
-            st.session_state['data'] = openbb.economy.macro()[0]
+            st.session_state['data'] = obb.economy.macro()[0]
 
         if col5.button('Market Overview'):
-            st.session_state['data'] = openbb.economy.overview()
+            st.session_state['data'] = obb.economy.overview()
 
         if col6.button('US Bonds'):
-            st.session_state['data'] = openbb.economy.usbonds()
+            st.session_state['data'] = obb.economy.usbonds()
 
 data_stream()
 

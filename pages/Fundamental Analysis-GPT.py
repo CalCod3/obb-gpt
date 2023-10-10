@@ -1,5 +1,5 @@
 import pandas as pd
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
@@ -12,7 +12,7 @@ st.set_page_config(page_title="Fundamental Analysis", page_icon="📈", layout="
 
 st.title("Fundamental Analysis with OpenBB:butterfly: & ChatGPT:robot_face:")
 
-unu_df, unu_ts = openbb.stocks.options.unu(limit = 500)
+unu_df, unu_ts = obb.stocks.options.unu(limit = 500)
 
 unu_df = unu_df.sort_values(by = 'Vol/OI', ascending = False)
 choice = st.selectbox(
@@ -31,31 +31,31 @@ with cont:
         col1, col2, col3, col4, col5, col6, col7, col8 = st.columns([1,1,1,1,1,1,1,1])
 
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.stocks.fa.enterprise(choice)
+            st.session_state['data'] = obb.stocks.fa.enterprise(choice)
 
         if col1.button('Balance'):
-            st.session_state['data'] = openbb.stocks.fa.balance(choice)
+            st.session_state['data'] = obb.stocks.fa.balance(choice)
 
         if col2.button('Cash-Flow'):
-            st.session_state['data'] = openbb.stocks.fa.cash(choice)
+            st.session_state['data'] = obb.stocks.fa.cash(choice)
 
         if col3.button('Enterprise Data'):
-            st.session_state['data'] = openbb.stocks.fa.enterprise(choice)
+            st.session_state['data'] = obb.stocks.fa.enterprise(choice)
 
         if col4.button('Annual Estimates'):
-            st.session_state['data'] = openbb.stocks.fa.est(choice)[0]
+            st.session_state['data'] = obb.stocks.fa.est(choice)[0]
 
         if col5.button('Rating over Time'):
-            st.session_state['data'] = openbb.stocks.fa.rating(choice)
+            st.session_state['data'] = obb.stocks.fa.rating(choice)
 
         if col6.button('Fraud Ratio'):
-            st.session_state['data'] = openbb.stocks.fa.fraud(choice)
+            st.session_state['data'] = obb.stocks.fa.fraud(choice)
 
         if col7.button('Key Ratios'):
-            st.session_state['data'] = openbb.stocks.fa.ratios(choice)
+            st.session_state['data'] = obb.stocks.fa.ratios(choice)
 
         if col8.button('Supplier Data'):
-            st.session_state['data'] = openbb.stocks.fa.supplier(choice)
+            st.session_state['data'] = obb.stocks.fa.supplier(choice)
 
 
 data_stream()

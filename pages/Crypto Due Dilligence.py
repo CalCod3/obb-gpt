@@ -1,5 +1,5 @@
 import pandas as pd
-from openbb_terminal.sdk import openbb
+from openbb import obb
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
@@ -12,7 +12,7 @@ st.set_page_config(page_title="Crypto Due Dilligence", page_icon="📈", layout=
 
 st.title("Crypto Due Dilligence with OpenBB:butterfly: & ChatGPT:robot_face:")
 
-options_df = openbb.crypto.onchain.erc20_tokens()
+options_df = obb.crypto.onchain.erc20_tokens()
 
 choice = st.selectbox(
     label = "Choose a Crypto",
@@ -30,31 +30,31 @@ with cont:
         col1, col2, col3, col4, col5, col6, col7, col8 = st.columns([1,1,1,1,1,1,1,1])
 
         if 'data' not in st.session_state:
-            st.session_state['data'] = openbb.crypto.dd.basic(choice)
+            st.session_state['data'] = obb.crypto.dd.basic(choice)
 
         if col1.button('Basic Info'):
-            st.session_state['data'] = openbb.crypto.dd.basic(choice)
+            st.session_state['data'] = obb.crypto.dd.basic(choice)
 
         if col2.button('Events'):
-            st.session_state['data'] = openbb.crypto.dd.events(choice)
+            st.session_state['data'] = obb.crypto.dd.events(choice)
 
         if col3.button('Exchanges'):
-            st.session_state['data'] = openbb.crypto.dd.ex(choice)
+            st.session_state['data'] = obb.crypto.dd.ex(choice)
 
         if col4.button('Messari Time Series'):
-            st.session_state['data'] = openbb.crypto.dd.get_mt(choice)
+            st.session_state['data'] = obb.crypto.dd.get_mt(choice)
 
         if col5.button('Market Cap Dominance'):
-            st.session_state['data'] = openbb.crypto.dd.mcapdom(choice)
+            st.session_state['data'] = obb.crypto.dd.mcapdom(choice)
 
         if col6.button('Markets'):
-            st.session_state['data'] = openbb.crypto.dd.mkt(choice)
+            st.session_state['data'] = obb.crypto.dd.mkt(choice)
 
         if col7.button('News'):
-            st.session_state['data'] = openbb.crypto.dd.news()
+            st.session_state['data'] = obb.crypto.dd.news()
 
         if col8.button('Twitter'):
-            st.session_state['data'] = openbb.crypto.dd.twitter(choice)
+            st.session_state['data'] = obb.crypto.dd.twitter(choice)
 
 
 data_stream()
