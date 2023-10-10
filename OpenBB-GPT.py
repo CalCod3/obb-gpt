@@ -1,7 +1,6 @@
 import streamlit as st 
 from openbb import obb
 import pandas as pd
-import plotly.graph_objects as go
 import sqlite3
 from sqlalchemy import create_engine
 from sqlalchemy.pool import StaticPool
