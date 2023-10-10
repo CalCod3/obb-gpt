@@ -1,5 +1,5 @@
 openbb==4.0.0a2
-langchain==0.0.266
+langchain==0.0.311
 langchain-experimental
 pypdf2
 streamlit
