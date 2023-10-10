@@ -4,7 +4,8 @@ import pandas as pd
 import sqlite3
 from sqlalchemy import create_engine
 from sqlalchemy.pool import StaticPool
-from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
+from langchain import OpenAI, SQLDatabase
+from langchain.chains.sql_database.base import SQLDatabaseChain
 from langchain.callbacks import get_openai_callback
 
 
