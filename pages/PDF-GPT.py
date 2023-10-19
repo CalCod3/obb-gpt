@@ -1,5 +1,6 @@
 import streamlit as st 
-from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
+from langchain import OpenAI, SQLDatabase
+from langchain_experimental.sql import SQLDatabaseChain
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings.openai import OpenAIEmbeddings
