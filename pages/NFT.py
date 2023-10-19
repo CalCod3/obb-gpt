@@ -4,7 +4,8 @@ import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
 from sqlalchemy.pool import StaticPool
-from langchain import OpenAI, SQLDatabase, SQLDatabaseChain
+from langchain import OpenAI, SQLDatabase
+from langchain_experimental.sql import SQLDatabaseChain
 from langchain.callbacks import get_openai_callback
 
 
