@@ -1,4 +1,4 @@
-openbb==4.0.0a2
+openbb==4.0.0a3
 langchain==0.0.311
 langchain-experimental
 pypdf2
